@@ -1,5 +1,8 @@
-
-
+---
+title: Using Mecab with Unidic
+feed: show
+date: 31-212-2023
+---
 According [https://www.dampfkraft.com/nlp/japanese-tokenizer-dictionaries.htmlUniDic](https://www.dampfkraft.com/nlp/japanese-tokenizer-dictionaries.htmlUniDic) , using Uidic may have a good parsed result than the dictionary which the MeCab default dictionary IPADic.
 
 The Uindic dictionary can download from [https://clrd.ninjal.ac.jp/unidic/](https://clrd.ninjal.ac.jp/unidic/)
