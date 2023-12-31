@@ -8,21 +8,21 @@ According [https://www.dampfkraft.com/nlp/japanese-tokenizer-dictionaries.htmlUn
 The Uindic dictionary can download from [https://clrd.ninjal.ac.jp/unidic/](https://clrd.ninjal.ac.jp/unidic/)
 
 For modern Japanese you may need first two dict, one is for written Japanese, another is for Spoken Japanese, you can choose one of it according the reading material.
-![[assets/img/Pasted image 20231231175703.png]]
+![[/assets/img/Pasted image 20231231175703.png]]
 
-![[assets/img/Pasted image 20231231175718.png]]
+![[/assets/img/Pasted image 20231231175718.png]]
 Then Download the latest version Unidic, I think the light version is for Lute is enough and you can also download the full version which needs more space.
 
-![[Pasted image 20231231175748.png]]
+![[/assets/img/Pasted image 20231231175748.png]]
 unidic-cwj-xxx.zip is for written Japanese
 
 unidic-csj-xxx.zalled directory, ususally is `C:\Program Files\MeCab`
 
 then extract the unidic dictionary to the dic directory
 
-![[assets/img/Pasted image 20231231175819.png]]
+![[/assets/img/Pasted image 20231231175819.png]]
 then in the MeCab etc folder, change the `mecabrc` file
 
 change the `dicdir` to the uindic dictionay which in the dic folder
 
-![[assets/img/Pasted image 20231231175829.png]]
+![[/assets/img/Pasted image 20231231175829.png]]
