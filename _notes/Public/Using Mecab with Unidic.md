@@ -17,11 +17,10 @@ Then Download the latest version Unidic, I think the light version is for Lute i
 ![](/assets/img/Pasted%20image%2020231231175748.png)
 unidic-cwj-xxx.zip is for written Japanese
 
-unidic-csj-xxx.zalled directory, ususally is `C:\Program Files\MeCab`
-
-then extract the unidic dictionary to the dic directory
-in the uindic direcotry find the dicrc and change the content
-add line for Lute to get reading
+unidic-csj-xxx.zip is for spoken Japanese
+then extract the unidic-xxx-xxx.zip 
+in the unidic folder in the uindic direcotry you find the dicrc and change the content
+add these lines for Lute to get reading
 
 ```
 ; yomi
@@ -29,7 +28,7 @@ node-format-yomi = %f[9]
 unk-format-yomi = %m
 eos-format-yomi  = \n
 ```
-The full dicrc should be like this
+Then the full dicrc should be like this
 ```
 dictionary-charset = utf8
 config-charset = utf8
@@ -57,6 +56,13 @@ eos-format-chamame  =
 bos-format-chamame  = B
 
 ```
+
+For Windows:
+
+find the unidic installed directory, ususally is `C:\Program Files\MeCab`
+
+then extract the copy/move unidic dictionary to the dic directory
+
 
 ![](/assets/img/Pasted%20image%2020231231175819.png)
 then in the MeCab etc folder, change the `mecabrc` file
