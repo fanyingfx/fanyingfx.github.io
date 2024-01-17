@@ -61,7 +61,7 @@ bos-format-chamame  = B
 
 For Windows:
 
-find the unidic installed directory, ususally is `C:\Program Files\MeCab`
+find the MeCab installed directory, ususally is `C:\Program Files\MeCab`
 
 then extract the copy/move unidic dictionary to the dic directory
 

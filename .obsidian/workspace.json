@@ -15,7 +15,7 @@
               "state": {
                 "file": "_notes/Public/Using Mecab with Unidic.md",
                 "mode": "source",
-                "source": true
+                "source": false
               }
             }
           }
@@ -148,8 +148,9 @@
   },
   "active": "f9aa1ba15370765a",
   "lastOpenFiles": [
-    "assets/img/Pasted.md",
+    "assets/img/OGImg.png",
     "_notes/Public/Using Mecab with Unidic.md",
+    "assets/img/Pasted.md",
     "_posts/2020-03-01-features.md",
     "_notes/Public/Welcome to the garden.md",
     "_notes/Public/Markdown Rendered.md",
