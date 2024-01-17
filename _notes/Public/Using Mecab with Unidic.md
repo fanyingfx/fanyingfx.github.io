@@ -12,14 +12,16 @@ For modern Japanese you may need first two dict, one is for written Japanese, an
 ![](/assets/img/Pasted%20image%2020231231175703.png)
 
 ![](/assets/img/Pasted%20image%2020231231175718.png)
-Then Download the latest version Unidic, I think the light version is for Lute is enough and you can also download the full version which needs more space.
+
+Then Download the latest version Unidic, I think the light version is for Lute is enough.
 
 ![](/assets/img/Pasted%20image%2020231231175748.png)
 unidic-cwj-xxx.zip is for written Japanese
-
 unidic-csj-xxx.zip is for spoken Japanese
+
 then extract the unidic-xxx-xxx.zip 
-in the unidic folder in the uindic direcotry you find the dicrc and change the content
+
+in the unidic folder  you can find the dicrc and change the content
 add these lines for Lute to get reading
 
 ```
