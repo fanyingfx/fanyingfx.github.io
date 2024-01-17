@@ -20,8 +20,8 @@ unidic-cwj-xxx.zip is for written Japanese
 unidic-csj-xxx.zalled directory, ususally is `C:\Program Files\MeCab`
 
 then extract the unidic dictionary to the dic directory
-in the uinidic direcotry find the dicrc and change the content
-add line for the yomi
+in the uindic direcotry find the dicrc and change the content
+add line for Lute to get reading
 
 ```
 ; yomi
