@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Fanying&#39;s Blog</title>
+    <link>https://fanyingfx.github.io/posts/</link>
+    <description>Recent content in Posts on Fanying&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jul 2024 10:43:11 +0800</lastBuildDate>
+    <atom:link href="https://fanyingfx.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mypost</title>
+      <link>https://fanyingfx.github.io/posts/mypost/</link>
+      <pubDate>Tue, 16 Jul 2024 10:43:11 +0800</pubDate>
+      <guid>https://fanyingfx.github.io/posts/mypost/</guid>
+      <description>print(&amp;#34;hello&amp;#34;) </description>
+    </item>
+  </channel>
+</rss>
