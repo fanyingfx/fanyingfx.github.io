@@ -9,6 +9,7 @@ https://matklad.github.io/links.html
 # Edsger W. Dijkstra 合集（更好的阅读的体验）
 https://raboof.github.io/ewd/
 
+<!--more-->
 
 # 学习用
 
