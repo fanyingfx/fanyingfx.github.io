@@ -80,7 +80,7 @@ fn max<T: PartialOrd>(a: T, b: T) -> T {
 [matklad谈zig编译泛型代码的优势](https://lobste.rs/s/0jknbl/roc_rewrites_compiler_zig#c_siki17)
 
 ## 子类型多态
-面向对象通过继承实现的多态
+C++/Java通过继承实现子类型多态
 具体实现一般是vtable
 
 # 动态多态与静态多态
