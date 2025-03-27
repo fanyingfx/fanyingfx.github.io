@@ -18,7 +18,7 @@ float add(float x, float y);
 ```
 编译到二进制的时候，符号表需要有唯一的标识，所以c++会对函数名进行[**Name Mangling**](https://www.ibm.com/docs/en/i/7.5?topic=linkage-name-mangling-c-only)。不过为了c语言FFI，对函数添加`extern C`则不会进行name mangling，相应的函数也没法重载
 
-odin的[producer group](https://odin-lang.org/docs/overview/#rationale-behind-explicit-overloading)也是特设多态，和其他语言的区别是需要用户手动指定哪些函数可以使用同样的名字，而非隐式通过同样的函数名实现函数重载
+odin的[procedure group](https://odin-lang.org/docs/overview/#rationale-behind-explicit-overloading)也是特设多态，和其他语言的区别是需要用户手动指定哪些函数可以使用同样的名字，而非隐式通过同样的函数名实现函数重载
 
 ### 大部分语言的四则运算和比较运算都是特设多态
 比如加法可以同时支持 `1+1` 和 `1.1 + 1.1`，此处加法支持各种整数和各种浮点数，通常情况下加法两边的类型是一致的比如都是i32或者f32
@@ -161,3 +161,6 @@ pub fn main() !void {
 rust社区有不少相关的讨论
 https://users.rust-lang.org/t/using-trait-vs-wrapping-object-in-enum/92120
 https://users.rust-lang.org/t/trait-object-or-enum-how-to-choice/100268
+
+# Row Polymorphism
+[https://jadon.io/blog/row-polymorphism/](https://jadon.io/blog/row-polymorphism/)
