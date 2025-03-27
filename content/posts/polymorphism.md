@@ -1,6 +1,7 @@
 +++
 title = '什么是多态'
 date = 2025-03-27
+draft = true
 +++
 
 来自维基百科,通常来说主要的多态类型如下
@@ -16,7 +17,7 @@ date = 2025-03-27
 int add(int x, int y);
 float add(float x, float y);
 ```
-编译到二进制的时候，符号表需要有唯一的标识，所以c++会对函数名进行[**Name Mangling**](https://www.ibm.com/docs/en/i/7.5?topic=linkage-name-mangling-c-only)。不过为了c语言FFI，对函数添加`extern C`则不会进行name mangling，相应的函数也没法重载
+在 C++ 中，为了在链接阶段唯一标识不同的函数，编译器会对函数名进行 [Name Mangling](https://www.ibm.com/docs/en/i/7.5?topic=linkage-name-mangling-c-only)。然而，为了与 C 语言进行 FFI（外部函数接口），如果在 C++ 代码中使用 extern "C" 关键字声明函数，编译器就不会对其进行 Name Mangling，因此这类函数无法重载。
 
 odin的[procedure group](https://odin-lang.org/docs/overview/#rationale-behind-explicit-overloading)也是特设多态，和其他语言的区别是需要用户手动指定哪些函数可以使用同样的名字，而非隐式通过同样的函数名实现函数重载
 
