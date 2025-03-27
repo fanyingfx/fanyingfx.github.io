@@ -1,6 +1,6 @@
 +++
 title= "Fanyingfx's Blog"
-template = "homepage.html"
+redirect_to ="/posts"
 +++
 
 Hello! I'm fanyingfx!

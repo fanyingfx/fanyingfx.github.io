@@ -1,45 +1,63 @@
 +++
 title = '什么是多态'
-date = 2025-03-27
+date = 2025-03-30
 +++
+# 什么是多态？
 
-来自维基百科,通常来说主要的多态类型如下
-- [特设多态](https://en.wikipedia.org/wiki/Ad_hoc_polymorphism): 为个体的特定类型的任意集合定义一个共同接口
-- [参数化多态](https://en.wikipedia.org/wiki/Parametric_polymorphism): 指定一个或多个类型不靠名字而是靠可以标识任何类型的抽象符号
-- [子类型多态](https://en.wikipedia.org/wiki/Subtyping):一个名字指称很多不同的类的实例，这些类有某个共同的超类
-## 特设多态(ad hoc polymorphism)
-为什么叫特设多态，主要是相对于参数化多态，特设多态针对的是特定类型（类型组合）的行为
-### 函数重载是特设多态
->什么是函数签名？
->通常意义上函数签名包括函数名以及输入的参数类型的组合，一般不包括函数的返回值类型
+打算整理一下**多态**相关的东西，目前还处于草稿阶段。。。
+
+来自维基百科，通常来说，多态主要分为以下几种类型：
+
+- [**特设多态（Ad-hoc Polymorphism）**](https://en.wikipedia.org/wiki/Ad_hoc_polymorphism)：为特定类型的不同集合定义一个统一的接口。  
+- [**参数化多态（Parametric Polymorphism）**](https://en.wikipedia.org/wiki/Parametric_polymorphism)：使用类型参数代替具体类型，使代码适用于任意类型。  
+- [**子类型多态（Subtyping）**](https://en.wikipedia.org/wiki/Subtyping)：允许同一个名称指代多个不同类的实例，这些类共享一个共同的超类。  
+
+---
+
+## **特设多态（Ad-hoc Polymorphism）**
+
+### **为什么叫特设多态？**
+特设多态与参数化多态相对，它针对的是**特定类型或类型组合**的行为，而不是对任意类型抽象。例如，函数重载和操作符重载就是特设多态的典型应用。
+
+### **函数重载是特设多态**
+#### **什么是函数签名？**
+通常，函数签名包括**函数名**以及**参数类型**的组合，一般不包含返回值类型。
+
 ```cpp
 int add(int x, int y);
 float add(float x, float y);
 ```
-编译到二进制的时候，符号表需要有唯一的标识，所以c++会对函数名进行[**Name Mangling**](https://www.ibm.com/docs/en/i/7.5?topic=linkage-name-mangling-c-only)。不过为了c语言FFI，对函数添加`extern C`则不会进行name mangling，相应的函数也没法重载
 
-odin的[procedure group](https://odin-lang.org/docs/overview/#rationale-behind-explicit-overloading)也是特设多态，和其他语言的区别是需要用户手动指定哪些函数可以使用同样的名字，而非隐式通过同样的函数名实现函数重载
+在 C++ 中，为了在链接阶段唯一标识不同的函数，编译器会对函数名进行 [Name Mangling](https://www.ibm.com/docs/en/i/7.5?topic=linkage-name-mangling-c-only)。然而，为了与 C 语言进行 FFI（外部函数接口），如果在 C++ 代码中使用 `extern "C"` 关键字声明函数，编译器就不会对其进行 Name Mangling，因此这类函数**无法重载**。
 
-### 大部分语言的四则运算和比较运算都是特设多态
-比如加法可以同时支持 `1+1` 和 `1.1 + 1.1`，此处加法支持各种整数和各种浮点数，通常情况下加法两边的类型是一致的比如都是i32或者f32
-不过根据语言的不同可能会发生type coercion（type coercion也是**特设多态** ：）,或者叫[隐式类型转换](https://stackoverflow.com/questions/66388288/what-is-the-difference-between-conversion-casting-and-coercion)
-ps. 新的语言在做隐式类型转换时一般会验证转换是否安全，否则会强制用户使用显示转换
-[Rust的type coercions](https://doc.rust-lang.org/reference/type-coercions.html)
-[Zig的type coercion](https://ziglang.org/documentation/master/#Type-Coercion)
-### OCaml没有特设多态
-OCaml不支持特设多态，针对不同类型的同样行为无法使用同名函数,比如Ocaml的打印函数:
-print_bytes,print_char,print_endline,print_float,print_int,print_newline,print_string 
+Odin 语言的 [Procedure Group](https://odin-lang.org/docs/overview/#rationale-behind-explicit-overloading) 也是特设多态的一种表现形式。与大多数语言不同，Odin 需要**手动**指定哪些函数可以使用相同的名称，而不是通过**隐式的**函数重载机制。
 
-整数加法是`+`：`1+ 1`
-浮点数加法是`+.`: `1.1 +. 1.1`
-### rust的trait（非dyn trait）和haskell的typeclass是特设多态
-如过需要Person类型的变量在ghci中可以直接打印出来，Person需要实现对应的Show instance，通过show函数将Person转成成字符串，通常情况下也可以使用`derive Show`来实现类似的功能
+### **大多数语言的四则运算和比较运算都是特设多态**
+例如，加法运算 `+` 既可以用于整数 (`1 + 1`)，也可以用于浮点数 (`1.1 + 1.1`)。  
+通常，加法两侧的操作数类型需要一致（如 `i32` 或 `f32`）。  
+但某些语言支持 **隐式类型转换（Type Coercion）**，例如 `1 + 1.1` 可能会将 `1` 转换为 `1.0` 以适配浮点数计算(因为此处的`1`是字面量，所以可能编译器会直接将它作为浮点数处理)
+
+
+Type Coercion 也是一种 **特设多态**，它允许不同但兼容的类型自动转换，在新的语言中一般会保证此时的转换是安全的，否则会要求改为显示转换的形式：
+- [Rust 的 Type Coercion](https://doc.rust-lang.org/reference/type-coercions.html)
+- [Zig 的 Type Coercion](https://ziglang.org/documentation/master/#Type-Coercion)
+
+### **OCaml 不支持特设多态**
+在 OCaml 中，相同运算对于不同的类型需要不同的运算符。例如：
+```ocaml
+1 + 1      (* 整数加法 *)
+1.1 +. 1.1 (* 浮点数加法 *)
+```
+此外，OCaml 的打印函数也都是独立的，如 `print_int`, `print_float`, `print_string` 等，而不像许多语言那样使用一个统一的 `print` 函数。
+
+### **Rust 的 Trait（非 `dyn`）和 Haskell 的 Typeclass 是特设多态**
+在 Haskell 中，如果 `Person` 类型的变量要支持在ghci显示，则需要实现 `Show` 类型类：
 ```haskell
 data Person = Person String Int  -- Name, Age
 instance Show Person where
     show (Person name age) = "Person: " ++ name ++ ", Age: " ++ show age
 ```
-Rust中有类似的`fmt::Display`,`fmt::Debug` trait，同样也可以用derive宏来实现相应的trait
+Rust 也有类似的 `fmt::Display`Trait：
 ```rust
 use std::fmt;
 
@@ -52,115 +70,78 @@ impl fmt::Display for Point {
         write!(f, "({}, {})", self.x, self.y)
     }
 }
-
 ```
 
-## 参数化多态
-大部分语言叫作泛型，通常来讲参数化多态是不考虑泛型约束的，不过从实用的角度看，大部分语言的参数化多态都有泛型约束能力
-### Haskell的map
+---
+
+## **参数化多态（Parametric Polymorphism）**
+参数化多态也被称为 **泛型**，它允许代码独立于具体类型进行抽象。 通常来讲参数化多态是不考虑泛型约束的，不过从实用的角度看，大部分语言的参数化多态都有泛型约束能力
+
+### **Haskell 的 `map`**
 ```haskell
-map :: (a->b) -> List a -> List b
+map :: (a -> b) -> [a] -> [b]
 map f [] = []
-map f x:xs = f x : map f xs
+map f (x:xs) = f x : map f xs
 ```
-此处的map不需要考虑a和b是什么类型
-### rust的max函数
+`map` 函数无需关心 `a` 和 `b` 的具体类型
+
+### **Rust 的 `max` 函数**
 ```rust
 fn max<T: PartialOrd>(a: T, b: T) -> T {
     if a > b { a } else { b }
 }
 ```
-此处的T需要支持比较操作(PartialOrd trait)
+这里 `T` 需要实现 `PartialOrd` Trait，否则无法进行比较。
 
-### 单态化
-[https://en.wikipedia.org/wiki/Monomorphization](https://en.wikipedia.org/wiki/Monomorphization)
+### 单态化（Monomorphization）
+在某些语言（如 C++ 和 Rust）中，参数化多态会在编译期生成具体的类型实例，这称为 **单态化**：
+- [C++ 模板和 Linker](https://www.airs.com/blog/archives/53)
+- [Matklad 讨论 Zig 处理泛型的优势](https://lobste.rs/s/0jknbl/roc_rewrites_compiler_zig#c_siki17)
 
-单态化与linker
-[linker和c++模板](https://www.airs.com/blog/archives/53)
-[matklad谈zig编译泛型代码的优势](https://lobste.rs/s/0jknbl/roc_rewrites_compiler_zig#c_siki17)
+---
 
-## 子类型多态
-面向对象通过继承实现的多态
-具体实现一般是vtable
+## **子类型多态（Subtyping Polymorphism）**
+子类型多态通常通过 **继承** 机制实现，比如C++, Java, C#
 
-# 动态多态与静态多态
-## 静态多态
-发生在编译期，包括参数化多态和特设多态
-## 运行时多态
-子类型多态是运行时多态
-rust的trait object
-java或者c++通过继承/接口实现的函数多态
+### **Rust 的 Trait Object**
+Trait 只有在满足一定条件时才能转换为 Trait Object，例如：
+```rust
+trait Animal {
+    fn make_sound(&self);
+}
 
-### 对于rust什么样的trait可以转成trait object?
-我自己的理解：这个trait可以实现成一个vtable，具体的类型可以被擦除，函数的入参都有self指针，如果有函数返回Self这种是不行的
-
-[dyn-compatibility](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility), A dyn-compatible trait can be the base trait of a trait object. A trait is dyn compatible if it has the following qualities
-
-不支持面向对象甚至没有接口的语言可以通过手写vtable实现运行时多态
-
-zig通过VTable实现多态,更多的可以参考[Zig Interfaces](https://www.openmymind.net/Zig-Interfaces/)
-```zig
-const std = @import("std");
-const VTable = struct {
-    ptr: *const anyopaque,
-    drawFn: *const fn (*const anyopaque) void,
-    fn init(ptr: anytype) VTable {
-        const T = @TypeOf(ptr);
-        const ptr_info = @typeInfo(T);
-        const Ty = ptr_info.pointer.child;
-        const gen = struct {
-            pub fn draw(pointer: *const anyopaque) void {
-                const self: T = @ptrCast(@alignCast(pointer));
-                // self.draw();
-                @compileLog(Ty);
-                Ty.draw(self);
-
-                // return ptr_info.pointer.child.draw(self);
-            }
-        };
-        return .{ .ptr = ptr, .drawFn = gen.draw };
-    }
-    fn draw(self: VTable) void {
-        self.drawFn(self.ptr);
-    }
-};
-const Rectangle = struct {
-    width: u32,
-    height: u32,
-    fn draw(self: *const Rectangle) void {
-        std.debug.print("Rectangle{{ width = {}, height = {} }}\n", .{ self.width, self.height });
-    }
-    fn shape(self: *const Rectangle) VTable {
-        return .init(self);
-    }
-};
-const Circle = struct {
-    raidus: u32,
-    fn draw(self: *const Circle) void {
-        std.debug.print("Circle{{ radius = {} }}\n", .{self.raidus});
-    }
-    fn shape(self: *const Circle) VTable {
-        return .init(self);
-    }
-};
-pub fn main() !void {
-    const rect = Rectangle{ .width = 10, .height = 20 };
-    const circle = Circle{ .raidus = 2 };
-    const shape1 = rect.shape();
-    const shape2 = circle.shape();
-    const shapes = [_]VTable{ shape1, shape2 };
-    for (shapes) |shape| {
-        shape.draw();
+struct Dog;
+impl Animal for Dog {
+    fn make_sound(&self) {
+        println!("Woof!");
     }
 }
 
+let dog: Box<dyn Animal> = Box::new(Dog);
 ```
+并非所有 Trait 都能成为 `dyn Trait`，更多细节可参考 [dyn-compatibility](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)。
 
-#### 通过sum type/tagged union实现运行时多态
-通过模式匹配手动分发到相应的函数，相比较vtable方案在存储上应该会有更大的开销,而且扩展必须要修改原来的sum type,具体可参考[表达式问题](https://en.wikipedia.org/wiki/Expression_problem)
-rust社区有不少相关的讨论
-https://users.rust-lang.org/t/using-trait-vs-wrapping-object-in-enum/92120
-https://users.rust-lang.org/t/trait-object-or-enum-how-to-choice/100268
+---
 
-# Row Polymorphism
-[https://jadon.io/blog/row-polymorphism/](https://jadon.io/blog/row-polymorphism/)
+## **动态多态 vs 静态多态**
+### **静态多态（Static Polymorphism）**
+发生在**编译期**，包括：
+- **特设多态**（函数重载、运算符重载）
+- **参数化多态**（泛型）
+
+### **动态（运行时）多态（Dynamic Polymorphism）**
+发生在**运行时**，包括：
+- **子类型多态**（继承/接口）
+- **Trait Object（Rust）**
+- **手写 VTable（如 Zig）**，可参考[Zig Interfaces](https://www.openmymind.net/Zig-Interfaces/)
+
+#### **通过Sum Type / Tagged Union 实现运行时多态**
+除了 VTable 方案，某些语言（如 Rust、OCaml）可以使用 **Sum Type / Tagged Union** 来手动分发到不同的行为，不过这种方法存在一定的问题，比如如果variant大小相差比较大的时候，会有空间的浪费，还有就是扩展是需要改变原来sum type的定义，具体可参考表达式问题
+- [表达式问题（Expression Problem）](https://en.wikipedia.org/wiki/Expression_problem)
+- [Rust: 使用 Trait Object vs Enum](https://users.rust-lang.org/t/using-trait-vs-wrapping-object-in-enum/92120)
+
+---
+
+## **Row Polymorphism**
+Row Polymorphism 是一种更灵活的多态机制，允许**扩展对象的字段**：
+- [介绍 Row Polymorphism](https://jadon.io/blog/row-polymorphism/)
