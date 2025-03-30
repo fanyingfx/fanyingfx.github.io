@@ -1,6 +1,6 @@
 +++
 title = '什么是多态'
-date = 2025-03-27
+date = 2025-03-30
 +++
 # 什么是多态？
 
@@ -33,14 +33,15 @@ Odin 语言的 [Procedure Group](https://odin-lang.org/docs/overview/#rationale-
 ### **大多数语言的四则运算和比较运算都是特设多态**
 例如，加法运算 `+` 既可以用于整数 (`1 + 1`)，也可以用于浮点数 (`1.1 + 1.1`)。  
 通常，加法两侧的操作数类型需要一致（如 `i32` 或 `f32`）。  
-但某些语言支持 **隐式类型转换（Type Coercion）**，例如 `1 + 1.1` 可能会将 `1` 转换为 `1.0` 以适配浮点数计算。
+但某些语言支持 **隐式类型转换（Type Coercion）**，例如 `1 + 1.1` 可能会将 `1` 转换为 `1.0` 以适配浮点数计算(因为此处的`1`是字面量，所以可能编译器会直接将它作为浮点数处理)
 
-Type Coercion 也是一种 **特设多态**，它允许不同但兼容的类型自动转换：
+
+Type Coercion 也是一种 **特设多态**，它允许不同但兼容的类型自动转换，在新的语言中一般会保证此时的转换是安全的，否则会要求改为显示转换的形式：
 - [Rust 的 Type Coercion](https://doc.rust-lang.org/reference/type-coercions.html)
 - [Zig 的 Type Coercion](https://ziglang.org/documentation/master/#Type-Coercion)
 
 ### **OCaml 不支持特设多态**
-在 OCaml 中，相同操作对于不同类型需要不同的函数名。例如：
+在 OCaml 中，相同运算对于不同的类型需要不同的运算符。例如：
 ```ocaml
 1 + 1      (* 整数加法 *)
 1.1 +. 1.1 (* 浮点数加法 *)
@@ -54,7 +55,7 @@ data Person = Person String Int  -- Name, Age
 instance Show Person where
     show (Person name age) = "Person: " ++ name ++ ", Age: " ++ show age
 ```
-Rust 也有类似的 `fmt::Display` 和 `fmt::Debug` Trait：
+Rust 也有类似的 `fmt::Display`Trait：
 ```rust
 use std::fmt;
 
@@ -80,7 +81,7 @@ map :: (a -> b) -> [a] -> [b]
 map f [] = []
 map f (x:xs) = f x : map f xs
 ```
-`map` 函数无需关心 `a` 和 `b` 的具体类型，它适用于任意类型。
+`map` 函数无需关心 `a` 和 `b` 的具体类型
 
 ### **Rust 的 `max` 函数**
 ```rust
@@ -126,15 +127,14 @@ let dog: Box<dyn Animal> = Box::new(Dog);
 - **特设多态**（函数重载、运算符重载）
 - **参数化多态**（泛型）
 
-### **运行时多态（Dynamic Polymorphism）**
+### **动态（运行时）多态（Dynamic Polymorphism）**
 发生在**运行时**，包括：
 - **子类型多态**（继承/接口）
 - **Trait Object（Rust）**
-- **VTable 机制（C++/Java）**
-- **手写 VTable（如 Zig）**
+- **手写 VTable（如 Zig）**，可参考[Zig Interfaces](https://www.openmymind.net/Zig-Interfaces/)
 
-#### **Sum Type / Tagged Union 实现运行时多态**
-除了 VTable 方案，某些语言（如 Rust、OCaml）使用 **Sum Type / Tagged Union** 来手动分发到不同的行为：
+#### **通过Sum Type / Tagged Union 实现运行时多态**
+除了 VTable 方案，某些语言（如 Rust、OCaml）可以使用 **Sum Type / Tagged Union** 来手动分发到不同的行为，不过这种方法存在一定的问题，比如如果variant大小相差比较大的时候，会有空间的浪费，还有就是扩展是需要改变原来sum type的定义，具体可参考表达式问题
 - [表达式问题（Expression Problem）](https://en.wikipedia.org/wiki/Expression_problem)
 - [Rust: 使用 Trait Object vs Enum](https://users.rust-lang.org/t/using-trait-vs-wrapping-object-in-enum/92120)
 

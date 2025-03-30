@@ -100,62 +100,6 @@ java或者c++通过继承/接口实现的函数多态
 不支持面向对象甚至没有接口的语言可以通过手写vtable实现运行时多态
 
 zig通过VTable实现多态,更多的可以参考[Zig Interfaces](https://www.openmymind.net/Zig-Interfaces/)
-```zig
-const std = @import("std");
-const VTable = struct {
-    ptr: *const anyopaque,
-    drawFn: *const fn (*const anyopaque) void,
-    fn init(ptr: anytype) VTable {
-        const T = @TypeOf(ptr);
-        const ptr_info = @typeInfo(T);
-        const Ty = ptr_info.pointer.child;
-        const gen = struct {
-            pub fn draw(pointer: *const anyopaque) void {
-                const self: T = @ptrCast(@alignCast(pointer));
-                // self.draw();
-                @compileLog(Ty);
-                Ty.draw(self);
-
-                // return ptr_info.pointer.child.draw(self);
-            }
-        };
-        return .{ .ptr = ptr, .drawFn = gen.draw };
-    }
-    fn draw(self: VTable) void {
-        self.drawFn(self.ptr);
-    }
-};
-const Rectangle = struct {
-    width: u32,
-    height: u32,
-    fn draw(self: *const Rectangle) void {
-        std.debug.print("Rectangle{{ width = {}, height = {} }}\n", .{ self.width, self.height });
-    }
-    fn shape(self: *const Rectangle) VTable {
-        return .init(self);
-    }
-};
-const Circle = struct {
-    raidus: u32,
-    fn draw(self: *const Circle) void {
-        std.debug.print("Circle{{ radius = {} }}\n", .{self.raidus});
-    }
-    fn shape(self: *const Circle) VTable {
-        return .init(self);
-    }
-};
-pub fn main() !void {
-    const rect = Rectangle{ .width = 10, .height = 20 };
-    const circle = Circle{ .raidus = 2 };
-    const shape1 = rect.shape();
-    const shape2 = circle.shape();
-    const shapes = [_]VTable{ shape1, shape2 };
-    for (shapes) |shape| {
-        shape.draw();
-    }
-}
-
-```
 
 #### 通过sum type/tagged union实现运行时多态
 通过模式匹配手动分发到相应的函数，相比较vtable方案在存储上应该会有更大的开销,而且扩展必须要修改原来的sum type,具体可参考[表达式问题](https://en.wikipedia.org/wiki/Expression_problem)
