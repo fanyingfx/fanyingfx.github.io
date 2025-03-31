@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<html class="dark light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>
+         什么是多态
+        
+    </title>
+
+        
+            <meta property="og:title" content="什么是多态" />
+        
+     
+
+     
+         
+     
+
+     
+         
+    
+
+    
+    
+
+    
+    
+        <link href=https://fanyingfx.github.io/fonts.css rel="stylesheet" />
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="" href="https://fanyingfx.github.io/atom.xml">
+
+
+    
+    
+        <link rel="stylesheet" type="text/css" href=https://fanyingfx.github.io/theme/light.css />
+        <link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://fanyingfx.github.io/theme/dark.css" />
+    
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://fanyingfx.github.io/js/themetoggle.js></script>
+    
+        <script>setTheme(getSavedTheme());</script>
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=https://fanyingfx.github.io/main.css />
+
+    
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main">
+        <a href=https:&#x2F;&#x2F;fanyingfx.github.io></a>
+
+        <div class="socials">
+            
+        </div>
+    </div>
+
+    <nav>
+        
+        <a href=https://fanyingfx.github.io/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+        <a href=https://fanyingfx.github.io/about style="margin-left: 0.5em">&#x2F;about</a>
+        
+        <a href=https://fanyingfx.github.io/tags style="margin-left: 0.5em">&#x2F;tags</a>
+        
+
+        
+        |<a id="dark-mode-toggle" onclick="toggleTheme(); event.preventDefault();" href="#">
+            <img src=https://fanyingfx.github.io/feather/sun.svg id="sun-icon" style="filter: invert(1);" alt="Light" />
+            <img src=https://fanyingfx.github.io/feather/moon.svg id="moon-icon" alt="Dark" />
+        </a>
+
+        <!-- Inititialize the theme toggle icons -->
+        <script>updateItemToggleTheme()</script>
+        
+    </nav>
+</header>
+
+
+        
+        
+    
+<main>
+    <article>
+        <div class="title">
+            
+            
+    <div class="page-header">
+        什么是多态<span class="primary-color" style="font-size: 1.6em">.</span>
+    </div>
+
+
+                <div class="meta">
+                    
+                        Posted on <time>2025-03-30</time>
+                    
+
+                    
+
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+
+                </div>
+        </div>
+
+        
+
+        
+        
+
+        <section class="body">
+            <h1 id="shen-me-shi-duo-tai"><a class="zola-anchor" href="#shen-me-shi-duo-tai" aria-label="Anchor link for: shen-me-shi-duo-tai">什么是多态？</a></h1>
+<p>来自维基百科，通常来说，多态主要分为以下几种类型：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ad_hoc_polymorphism"><strong>特设多态（Ad-hoc Polymorphism）</strong></a>：为特定类型的不同集合定义一个统一的接口。</li>
+<li><a href="https://en.wikipedia.org/wiki/Parametric_polymorphism"><strong>参数化多态（Parametric Polymorphism）</strong></a>：使用类型参数代替具体类型，使代码适用于任意类型。</li>
+<li><a href="https://en.wikipedia.org/wiki/Subtyping"><strong>子类型多态（Subtyping）</strong></a>：允许同一个名称指代多个不同类的实例，这些类共享一个共同的超类。</li>
+</ul>
+<hr />
+<h2 id="te-she-duo-tai-ad-hoc-polymorphism"><a class="zola-anchor" href="#te-she-duo-tai-ad-hoc-polymorphism" aria-label="Anchor link for: te-she-duo-tai-ad-hoc-polymorphism"><strong>特设多态（Ad-hoc Polymorphism）</strong></a></h2>
+<h3 id="wei-shen-me-jiao-te-she-duo-tai"><a class="zola-anchor" href="#wei-shen-me-jiao-te-she-duo-tai" aria-label="Anchor link for: wei-shen-me-jiao-te-she-duo-tai"><strong>为什么叫特设多态？</strong></a></h3>
+<p>特设多态与参数化多态相对，它针对的是<strong>特定类型或类型组合</strong>的行为，而不是对任意类型抽象。例如，函数重载和操作符重载就是特设多态的典型应用。</p>
+<h3 id="han-shu-zhong-zai-shi-te-she-duo-tai"><a class="zola-anchor" href="#han-shu-zhong-zai-shi-te-she-duo-tai" aria-label="Anchor link for: han-shu-zhong-zai-shi-te-she-duo-tai"><strong>函数重载是特设多态</strong></a></h3>
+<h4 id="shen-me-shi-han-shu-qian-ming"><a class="zola-anchor" href="#shen-me-shi-han-shu-qian-ming" aria-label="Anchor link for: shen-me-shi-han-shu-qian-ming"><strong>什么是函数签名？</strong></a></h4>
+<p>通常，函数签名包括<strong>函数名</strong>以及<strong>参数类型</strong>的组合，一般不包含返回值类型。</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">add</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">x</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">y</span><span>);
+</span><span style="color:#b48ead;">float </span><span style="color:#8fa1b3;">add</span><span>(</span><span style="color:#b48ead;">float </span><span style="color:#bf616a;">x</span><span>, </span><span style="color:#b48ead;">float </span><span style="color:#bf616a;">y</span><span>);
+</span></code></pre>
+<p>在 C++ 中，为了在链接阶段唯一标识不同的函数，编译器会对函数名进行 <a href="https://www.ibm.com/docs/en/i/7.5?topic=linkage-name-mangling-c-only">Name Mangling</a>。然而，为了与 C 语言进行 FFI（外部函数接口），如果在 C++ 代码中使用 <code>extern "C"</code> 关键字声明函数，编译器就不会对其进行 Name Mangling，因此这类函数<strong>无法重载</strong>。</p>
+<p>Odin 语言的 <a href="https://odin-lang.org/docs/overview/#rationale-behind-explicit-overloading">Procedure Group</a> 也是特设多态的一种表现形式。与大多数语言不同，Odin 需要<strong>手动</strong>指定哪些函数可以使用相同的名称，而不是通过<strong>隐式的</strong>函数重载机制。</p>
+<h3 id="da-duo-shu-yu-yan-de-si-ze-yun-suan-he-bi-jiao-yun-suan-du-shi-te-she-duo-tai"><a class="zola-anchor" href="#da-duo-shu-yu-yan-de-si-ze-yun-suan-he-bi-jiao-yun-suan-du-shi-te-she-duo-tai" aria-label="Anchor link for: da-duo-shu-yu-yan-de-si-ze-yun-suan-he-bi-jiao-yun-suan-du-shi-te-she-duo-tai"><strong>大多数语言的四则运算和比较运算都是特设多态</strong></a></h3>
+<p>例如，加法运算 <code>+</code> 既可以用于整数 (<code>1 + 1</code>)，也可以用于浮点数 (<code>1.1 + 1.1</code>)。<br />
+通常，加法两侧的操作数类型需要一致（如 <code>i32</code> 或 <code>f32</code>）。<br />
+但某些语言支持 <strong>隐式类型转换（Type Coercion）</strong>，例如 <code>1 + 1.1</code> 可能会将 <code>1</code> 转换为 <code>1.0</code> 以适配浮点数计算(因为此处的<code>1</code>是字面量，所以可能编译器会直接将它作为浮点数处理)</p>
+<p>Type Coercion 也是一种 <strong>特设多态</strong>，它允许不同但兼容的类型自动转换，在新的语言中一般会保证此时的转换是安全的，否则会要求改为显示转换的形式：</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/reference/type-coercions.html">Rust 的 Type Coercion</a></li>
+<li><a href="https://ziglang.org/documentation/master/#Type-Coercion">Zig 的 Type Coercion</a></li>
+</ul>
+<h3 id="ocaml-bu-zhi-chi-te-she-duo-tai"><a class="zola-anchor" href="#ocaml-bu-zhi-chi-te-she-duo-tai" aria-label="Anchor link for: ocaml-bu-zhi-chi-te-she-duo-tai"><strong>OCaml 不支持特设多态</strong></a></h3>
+<p>在 OCaml 中，相同运算对于不同的类型需要不同的运算符。例如：</p>
+<pre data-lang="ocaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-ocaml "><code class="language-ocaml" data-lang="ocaml"><span style="color:#d08770;">1 </span><span>+ </span><span style="color:#d08770;">1      </span><span style="color:#65737e;">(* 整数加法 *)
+</span><span style="color:#d08770;">1.1 </span><span>+. </span><span style="color:#d08770;">1.1 </span><span style="color:#65737e;">(* 浮点数加法 *)
+</span></code></pre>
+<p>此外，OCaml 的打印函数也都是独立的，如 <code>print_int</code>, <code>print_float</code>, <code>print_string</code> 等，而不像许多语言那样使用一个统一的 <code>print</code> 函数。</p>
+<h3 id="rust-de-trait-fei-dyn-he-haskell-de-typeclass-shi-te-she-duo-tai"><a class="zola-anchor" href="#rust-de-trait-fei-dyn-he-haskell-de-typeclass-shi-te-she-duo-tai" aria-label="Anchor link for: rust-de-trait-fei-dyn-he-haskell-de-typeclass-shi-te-she-duo-tai"><strong>Rust 的 Trait（非 <code>dyn</code>）和 Haskell 的 Typeclass 是特设多态</strong></a></h3>
+<p>在 Haskell 中，如果 <code>Person</code> 类型的变量要支持在ghci显示，则需要实现 <code>Show</code> 类型类：</p>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#b48ead;">data </span><span style="color:#d08770;">Person </span><span>= </span><span style="color:#d08770;">Person String Int  </span><span style="color:#65737e;">-- Name, Age
+</span><span style="color:#b48ead;">instance Show Person where
+</span><span>    show (</span><span style="color:#d08770;">Person</span><span> name age) = &quot;</span><span style="color:#a3be8c;">Person: </span><span>&quot; ++ name ++ &quot;</span><span style="color:#a3be8c;">, Age: </span><span>&quot; ++ show age
+</span></code></pre>
+<p>Rust 也有类似的 <code>fmt::Display</code>Trait：</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">use </span><span>std::fmt;
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Point {
+</span><span>    </span><span style="color:#bf616a;">x</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">y</span><span>: </span><span style="color:#b48ead;">i32</span><span>,
+</span><span>}
+</span><span style="color:#b48ead;">impl </span><span>fmt::Display </span><span style="color:#b48ead;">for </span><span>Point {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">fmt</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">f</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>fmt::Formatter) -&gt; fmt::Result {
+</span><span>        write!(f, &quot;</span><span style="color:#a3be8c;">(</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">, </span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">)</span><span>&quot;, </span><span style="color:#bf616a;">self</span><span>.x, </span><span style="color:#bf616a;">self</span><span>.y)
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<hr />
+<h2 id="can-shu-hua-duo-tai-parametric-polymorphism"><a class="zola-anchor" href="#can-shu-hua-duo-tai-parametric-polymorphism" aria-label="Anchor link for: can-shu-hua-duo-tai-parametric-polymorphism"><strong>参数化多态（Parametric Polymorphism）</strong></a></h2>
+<p>参数化多态也被称为 <strong>泛型</strong>，它允许代码独立于具体类型进行抽象。 通常来讲参数化多态是不考虑泛型约束的，不过从实用的角度看，大部分语言的参数化多态都有泛型约束能力</p>
+<h3 id="haskell-de-map"><a class="zola-anchor" href="#haskell-de-map" aria-label="Anchor link for: haskell-de-map"><strong>Haskell 的 <code>map</code></strong></a></h3>
+<pre data-lang="haskell" style="background-color:#2b303b;color:#c0c5ce;" class="language-haskell "><code class="language-haskell" data-lang="haskell"><span style="color:#8fa1b3;">map </span><span style="color:#b48ead;">::</span><span> (</span><span style="color:#bf616a;">a </span><span style="color:#b48ead;">-&gt; </span><span style="color:#bf616a;">b</span><span>) </span><span style="color:#b48ead;">-&gt;</span><span> [</span><span style="color:#bf616a;">a</span><span>] </span><span style="color:#b48ead;">-&gt;</span><span> [</span><span style="color:#bf616a;">b</span><span>]
+</span><span>map f </span><span style="color:#d08770;">[] </span><span>= </span><span style="color:#d08770;">[]
+</span><span>map f (x:xs) = f x : map f xs
+</span></code></pre>
+<p><code>map</code> 函数无需关心 <code>a</code> 和 <code>b</code> 的具体类型</p>
+<h3 id="rust-de-max-han-shu"><a class="zola-anchor" href="#rust-de-max-han-shu" aria-label="Anchor link for: rust-de-max-han-shu"><strong>Rust 的 <code>max</code> 函数</strong></a></h3>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">max</span><span>&lt;T: PartialOrd&gt;(</span><span style="color:#bf616a;">a</span><span>: T, </span><span style="color:#bf616a;">b</span><span>: T) -&gt; T {
+</span><span>    </span><span style="color:#b48ead;">if</span><span> a &gt; b { a } </span><span style="color:#b48ead;">else </span><span>{ b }
+</span><span>}
+</span></code></pre>
+<p>这里 <code>T</code> 需要实现 <code>PartialOrd</code> Trait，否则无法进行比较。</p>
+<h3 id="dan-tai-hua-monomorphization"><a class="zola-anchor" href="#dan-tai-hua-monomorphization" aria-label="Anchor link for: dan-tai-hua-monomorphization">单态化（Monomorphization）</a></h3>
+<p>在某些语言（如 C++ 和 Rust）中，参数化多态会在编译期生成具体的类型实例，这称为 <strong>单态化</strong>：</p>
+<ul>
+<li><a href="https://www.airs.com/blog/archives/53">C++ 模板和 Linker</a></li>
+<li><a href="https://lobste.rs/s/0jknbl/roc_rewrites_compiler_zig#c_siki17">Matklad 讨论 Zig 处理泛型的优势</a></li>
+</ul>
+<hr />
+<h2 id="zi-lei-xing-duo-tai-subtyping-polymorphism"><a class="zola-anchor" href="#zi-lei-xing-duo-tai-subtyping-polymorphism" aria-label="Anchor link for: zi-lei-xing-duo-tai-subtyping-polymorphism"><strong>子类型多态（Subtyping Polymorphism）</strong></a></h2>
+<p>子类型多态通常通过 <strong>继承</strong> 机制实现，比如C++, Java, C#</p>
+<h3 id="rust-de-trait-object"><a class="zola-anchor" href="#rust-de-trait-object" aria-label="Anchor link for: rust-de-trait-object"><strong>Rust 的 Trait Object</strong></a></h3>
+<p>Trait 只有在满足一定条件时才能转换为 Trait Object，例如：</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">trait </span><span>Animal {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">make_sound</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>Dog;
+</span><span style="color:#b48ead;">impl </span><span>Animal </span><span style="color:#b48ead;">for </span><span>Dog {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">make_sound</span><span>(&amp;</span><span style="color:#bf616a;">self</span><span>) {
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">Woof!</span><span>&quot;);
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">let</span><span> dog: Box&lt;dyn Animal&gt; = Box::new(Dog);
+</span></code></pre>
+<p>并非所有 Trait 都能成为 <code>dyn Trait</code>，更多细节可参考 <a href="https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility">dyn-compatibility</a>。</p>
+<hr />
+<h2 id="dong-tai-duo-tai-vs-jing-tai-duo-tai"><a class="zola-anchor" href="#dong-tai-duo-tai-vs-jing-tai-duo-tai" aria-label="Anchor link for: dong-tai-duo-tai-vs-jing-tai-duo-tai"><strong>动态多态 vs 静态多态</strong></a></h2>
+<h3 id="jing-tai-duo-tai-static-polymorphism"><a class="zola-anchor" href="#jing-tai-duo-tai-static-polymorphism" aria-label="Anchor link for: jing-tai-duo-tai-static-polymorphism"><strong>静态多态（Static Polymorphism）</strong></a></h3>
+<p>发生在<strong>编译期</strong>，包括：</p>
+<ul>
+<li><strong>特设多态</strong>（函数重载、运算符重载）</li>
+<li><strong>参数化多态</strong>（泛型）</li>
+</ul>
+<h3 id="dong-tai-yun-xing-shi-duo-tai-dynamic-polymorphism"><a class="zola-anchor" href="#dong-tai-yun-xing-shi-duo-tai-dynamic-polymorphism" aria-label="Anchor link for: dong-tai-yun-xing-shi-duo-tai-dynamic-polymorphism"><strong>动态（运行时）多态（Dynamic Polymorphism）</strong></a></h3>
+<p>发生在<strong>运行时</strong>，包括：</p>
+<ul>
+<li><strong>子类型多态</strong>（继承/接口）</li>
+<li><strong>Trait Object（Rust）</strong></li>
+<li><strong>手写 VTable（如 Zig）</strong>，可参考<a href="https://www.openmymind.net/Zig-Interfaces/">Zig Interfaces</a></li>
+</ul>
+<h4 id="tong-guo-sum-type-tagged-union-shi-xian-yun-xing-shi-duo-tai"><a class="zola-anchor" href="#tong-guo-sum-type-tagged-union-shi-xian-yun-xing-shi-duo-tai" aria-label="Anchor link for: tong-guo-sum-type-tagged-union-shi-xian-yun-xing-shi-duo-tai"><strong>通过Sum Type / Tagged Union 实现运行时多态</strong></a></h4>
+<p>除了 VTable 方案，某些语言（如 Rust、OCaml）可以使用 <strong>Sum Type / Tagged Union</strong> 来手动分发到不同的行为，不过这种方法存在一定的问题，比如如果variant大小相差比较大的时候，会有空间的浪费，还有就是扩展是需要改变原来sum type的定义，具体可参考表达式问题</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Expression_problem">表达式问题（Expression Problem）</a></li>
+<li><a href="https://users.rust-lang.org/t/using-trait-vs-wrapping-object-in-enum/92120">Rust: 使用 Trait Object vs Enum</a></li>
+</ul>
+<hr />
+<h2 id="row-polymorphism"><a class="zola-anchor" href="#row-polymorphism" aria-label="Anchor link for: row-polymorphism"><strong>Row Polymorphism</strong></a></h2>
+<p>Row Polymorphism 是一种更灵活的多态机制，允许<strong>扩展对象的字段</strong>：</p>
+<ul>
+<li><a href="https://jadon.io/blog/row-polymorphism/">介绍 Row Polymorphism</a></li>
+</ul>
+
+        </section>
+    </article>
+</main>
+
+
+
+        
+            
+        
+
+        
+    </div>
+</body>
+
+</html>
