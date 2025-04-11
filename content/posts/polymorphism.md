@@ -101,7 +101,8 @@ fn max<T: PartialOrd>(a: T, b: T) -> T {
 ---
 
 ## **子类型多态（Subtyping Polymorphism）**
-子类型多态通常通过 **继承** 机制实现，比如C++, Java, C#
+在面向对象语言中子类型通常通过 **继承** 机制实现，比如C++, Java, C#
+不过子类型不是必须通过继承实现，其实两者是正交的，[Subtyping vs inheritance](https://www.cmi.ac.in/~madhavan/courses/pl2006/lecturenotes/lecture-notes/node28.html)
 
 ### **Rust 的 Trait Object**
 Trait 只有在满足一定条件时才能转换为 Trait Object，例如：
