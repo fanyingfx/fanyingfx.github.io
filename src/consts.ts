@@ -5,7 +5,7 @@ import * as config from "astro:env/client";
 import STATS from "../content/snapshot/article-stats.json";
 import COMMENTS from "../content/snapshot/article-comments.json";
 
-type Comment = (typeof COMMENTS)[number];
+// type Comment = (typeof COMMENTS)[number];
 
 /**
  * Whether to enable backend, required by click and comment feature.
