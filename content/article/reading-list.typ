@@ -1,10 +1,11 @@
 #import "/typ/templates/blog.typ": *
+#import "../other/blog-tags.typ": blog-tags
 #show: main.with(
   title: "阅读列表",
   desc: [阅读列表],
   date: "2024-11-08",
   tags: (
-    blog-tags.misc,
+    blog-tags.reading,
   ),
 )
 

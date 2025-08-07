@@ -1,4 +1,5 @@
 #import "/typ/templates/blog.typ": *
+
 #show: main.with(
   title: "什么是多态",
   desc: [编程语言中的多态],
