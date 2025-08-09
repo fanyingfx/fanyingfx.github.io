@@ -57,7 +57,7 @@ fn max<T:PartialOrd>(a:T,b:T)->T{
 此外，OCaml 的打印函数也都是独立的，如 `print_int`, `print_float`, `print_string` 等，不过也有一个支持多种类型的格式化函数 `Printf.printf` 函数。
 
 == 子类型多态
-在面向对象语言中子类型通常通过 **继承** 机制实现，比如C++, Java, C\#等，
+在面向对象语言中子类型通常通过*继承*机制实现，比如C++, Java, C\#等，
 不过子类型不是必须通过继承实现，其实两者并不强相关参考：#link("https://www.cmi.ac.in/~madhavan/courses/pl2006/lecturenotes/lecture-notes/node28.html")[Subtyping vs inheritance]
 
 
